@@ -1,6 +1,6 @@
-FROM python:3.10.12-slim
+FROM python:3.12-alpine
 
-WORKDIR /library/
+WORKDIR /app/
 
 RUN pip install --upgrade pip
 
@@ -8,4 +8,4 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY ./app/ .
