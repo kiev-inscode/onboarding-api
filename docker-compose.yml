@@ -1,7 +1,9 @@
 services:
   api:
-    build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    command: ./entrypoint.sh
     volumes: 
       - ./app:/app
     env_file:
