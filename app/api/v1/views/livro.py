@@ -1,7 +1,7 @@
 from django_inscode.views import ModelView
 
 from core.services import livro_service
-from core.transports import LivroTransport
+from core.schemas import LivroTransport
 
 
 class LivroView(ModelView):
