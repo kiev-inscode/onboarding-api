@@ -7,3 +7,7 @@ class Livro(SoftDeleteBaseModel):
     autor = models.CharField(max_length=255)
     editor = models.CharField(max_length=255)
     publicado_em = models.DateField()
+
+    @property
+    def is_emprestado(self):
+        return self.emprestimos.filter(devolvido_em__isnull=True).exists()
