@@ -18,10 +18,10 @@ class RealizarEmprestimoService(OrchestratorService):
         try:
             livro = livro_repository.read(livro_id)
         except exceptions.NotFound:
-            return exceptions.NotFound(message="Livro não encontrado")
+            raise exceptions.NotFound(message="Livro não encontrado")
 
         if livro.is_emprestado:
-            return exceptions.BadRequest(message="Livro já emprestado.")
+            raise exceptions.BadRequest(message="Livro já emprestado.")
     
         try:
             usuario = usuario_repository.read(usuario_id)
@@ -41,7 +41,7 @@ class DevolverEmprestimoService(OrchestratorService):
             raise exceptions.NotFound(message="Empréstimo não encontrado.")
 
         if emprestimo.devolvido_em is not None:
-            return exceptions.BadRequest(message="Livro já devolvido.")
+            raise exceptions.BadRequest()
 
         emprestimo_updated = emprestimo_repository.update(emprestimo_id, devolvido_em=datetime.now().date())
 
