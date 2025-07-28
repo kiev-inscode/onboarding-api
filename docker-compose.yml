@@ -1,9 +1,11 @@
 services:
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
     command: ./entrypoint.sh
     volumes: 
-      - ./library:/library
+      - ./app:/app
     env_file:
       - .env
     ports:
