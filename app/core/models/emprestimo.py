@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 class Emprestimo(SoftDeleteBaseModel):
     usuario = models.ForeignKey("Usuario", on_delete=models.CASCADE, related_name="emprestimos", blank=False)
-    livro = models.ForeignKey("Livro", on_delete=models.CASCADE, related_name="empretimos", blank=False)
+    livro = models.ForeignKey("Livro", on_delete=models.CASCADE, related_name="emprestimos", blank=False)
     emprestado_em = models.DateField(auto_now_add=True)
     vencimento_em = models.DateField(default=datetime.now().date()+timedelta(days=7))
     devolvido_em = models.DateField(default=None, null=True, blank=True)

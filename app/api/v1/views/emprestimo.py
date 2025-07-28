@@ -3,7 +3,7 @@ from django_inscode.views import GenericOrchestratorView, GenericModelView
 from django_inscode import mixins
 
 from core.schemas import EmprestimoSchema
-from core.services import emprestimo_service, realizar_emprestimo_service
+from core.services import emprestimo_service, realizar_emprestimo_service, devolver_emprestimo_service
 
 class EmprestimoView(GenericModelView, mixins.ViewRetrieveModelMixin):
     serializer = EmprestimoSchema
@@ -14,3 +14,9 @@ class RealizarEmprestimoView(GenericOrchestratorView):
 
     def post(self, request, *args, **kwargs):
         return self.execute(request, *args, **kwargs)
+    
+class DevolverEmprestimoView(GenericOrchestratorView):
+    service = devolver_emprestimo_service
+
+    def get(self, request, emprestimo_id, *args, **kwargs):
+        return self.execute(request, *args, emprestimo_id=emprestimo_id, **kwargs)
