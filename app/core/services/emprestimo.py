@@ -41,7 +41,7 @@ class DevolverEmprestimoService(OrchestratorService):
             raise exceptions.NotFound(message="Empréstimo não encontrado.")
 
         if emprestimo.devolvido_em is not None:
-            raise exceptions.BadRequest()
+            raise exceptions.BadRequest(message="O livro já foi devolvido.")
 
         emprestimo_updated = emprestimo_repository.update(emprestimo_id, devolvido_em=datetime.now().date())
 
