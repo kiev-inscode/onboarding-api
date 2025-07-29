@@ -8,6 +8,8 @@ django-environ==0.12.0
 django-filter==25.1
 django-inscode==1.6.0
 django-soft-delete==1.0.19
+factory_boy==3.3.3
+Faker==37.4.2
 idna==3.10
 josepy==2.1.0
 marshmallow==4.0.0
@@ -17,4 +19,5 @@ pycparser==2.22
 pytz==2025.2
 requests==2.32.4
 sqlparse==0.5.3
+tzdata==2025.2
 urllib3==2.5.0
